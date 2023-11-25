@@ -35,6 +35,7 @@ class MigrationsExtension extends Nette\DI\CompilerExtension
 		'diffGenerator' => TRUE, // false|doctrine
 		'withDummyData' => FALSE,
 		'ignoredQueriesFile' => NULL,
+		'enforceOrderByDate' => TRUE,
 	];
 
 	/** @var array */
@@ -95,6 +96,9 @@ class MigrationsExtension extends Nette\DI\CompilerExtension
 		// extensionHandlers
 		Validators::assertField($config, 'phpParams', 'array');
 		$extensionHandlers = $this->createExtensionHandlerDefinitions($driver, $config['phpParams']);
+
+		// enforceOrderByDate
+		Validators::assertField($config, 'enforceOrderByDate', 'bool');
 
 		// configuration
 		$configuration = $this->createConfigurationDefinition();

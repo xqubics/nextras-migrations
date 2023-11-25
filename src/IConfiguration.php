@@ -28,4 +28,9 @@ interface IConfiguration
 	 */
 	public function getExtensionHandlers();
 
+	/** 
+	 * @return bool
+	 */
+	public function getEnforceOrderByDate();
+
 }

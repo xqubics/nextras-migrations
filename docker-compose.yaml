@@ -3,7 +3,7 @@ x-php-service-base: &php-service-base
       replicas: 0
 
     working_dir: /src
-    user: '1000:1000'
+    # user: '1000:1000'
     volumes:
       - ./src:/src/src
       - ./tests:/src/tests

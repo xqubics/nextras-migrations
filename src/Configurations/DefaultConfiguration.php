@@ -33,6 +33,9 @@ class DefaultConfiguration implements IConfiguration
 	/** @var bool */
 	protected $withDummyData;
 
+	/** @var bool */
+	protected $enforceOrderByDate;
+
 	/** @var array */
 	protected $phpParams;
 
@@ -55,12 +58,13 @@ class DefaultConfiguration implements IConfiguration
 	 * @param  bool    $withDummyData
 	 * @param  array   $phpParams
 	 */
-	public function __construct($dir, IDriver $driver, $withDummyData = TRUE, array $phpParams = [])
+	public function __construct($dir, IDriver $driver, $withDummyData = TRUE, $enforceOrderByDate = TRUE, array $phpParams = [])
 	{
 		$this->dir = $dir;
 		$this->driver = $driver;
 		$this->withDummyData = $withDummyData;
 		$this->phpParams = $phpParams;
+		$this->enforceOrderByDate = $enforceOrderByDate;
 	}
 
 
@@ -132,4 +136,12 @@ class DefaultConfiguration implements IConfiguration
 		$this->dummyDataDiffGenerator = $generator;
 	}
 
+
+	/**
+	 * @return bool
+	 */
+	public function getEnforceOrderByDate()
+	{
+		return $this->enforceOrderByDate;
+	}
 }

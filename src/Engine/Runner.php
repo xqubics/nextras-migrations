@@ -88,6 +88,8 @@ class Runner
 	 */
 	public function run($mode = self::MODE_CONTINUE, IConfiguration $config = NULL)
 	{
+		$enforceOrderByDate = true;
+
 		if ($config) {
 			foreach ($config->getGroups() as $group) {
 				$this->addGroup($group);
@@ -96,6 +98,8 @@ class Runner
 			foreach ($config->getExtensionHandlers() as $ext => $handler) {
 				$this->addExtensionHandler($ext, $handler);
 			}
+
+			$enforceOrderByDate = $config->getEnforceOrderByDate();
 		}
 
 		if ($mode === self::MODE_INIT) {
@@ -120,7 +124,7 @@ class Runner
 			$this->driver->createTable();
 			$migrations = $this->driver->getAllMigrations();
 			$files = $this->finder->find($this->groups, array_keys($this->extensionsHandlers));
-			$toExecute = $this->orderResolver->resolve($migrations, $this->groups, $files, $mode);
+			$toExecute = $this->orderResolver->resolve($migrations, $this->groups, $files, $mode, $enforceOrderByDate);
 			$this->printer->printToExecute($toExecute);
 
 			foreach ($toExecute as $file) {

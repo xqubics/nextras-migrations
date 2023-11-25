@@ -53,4 +53,12 @@ class Configuration implements IConfiguration
 	{
 		return $this->extensionHandlers;
 	}
+
+	/**
+	 * @return bool
+	 */
+	public function getEnforceOrderByDate()
+	{
+		return true;
+	}
 }
