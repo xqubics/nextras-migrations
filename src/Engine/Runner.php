@@ -100,7 +100,7 @@ class Runner
 			}
 
 			$enforceOrderByDate = $config->getEnforceOrderByDate();
-			printf("Runner.php: enforceOrderByDate = %b\n", $enforceOrderByDate);
+			printf("Info: Running migrations with enforceOrderByDate = %b\n", $config['enforceOrderByDate']);
 		}
 
 		if ($mode === self::MODE_INIT) {
