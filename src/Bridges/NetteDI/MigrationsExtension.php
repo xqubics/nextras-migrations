@@ -65,6 +65,8 @@ class MigrationsExtension extends Nette\DI\CompilerExtension
 	{
 		$config = $this->validateConfig($this->defaults);
 
+		printf("MigrationsExtension config: %b\n", $config['enforceOrderByDate']);
+
 		// dbal
 		Validators::assertField($config, 'dbal', 'null|string|Nette\DI\Statement');
 		$dbal = $this->getDbalDefinition($config['dbal']);
@@ -157,8 +159,10 @@ class MigrationsExtension extends Nette\DI\CompilerExtension
 			}
 		}
 
+		printf("MigrationsExtension::beforeCompile: %b\n", $config['enforceOrderByDate']);
+
 		$builder->getDefinition($this->prefix('configuration'))
-			->setArguments([$groups, $extensionHandlers]);
+			->setArguments([$groups, $extensionHandlers, $config['enforceOrderByDate']]);
 	}
 
 

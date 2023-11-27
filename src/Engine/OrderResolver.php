@@ -94,6 +94,7 @@ class OrderResolver
 					continue;
 				}
 
+				printf("OrderResolver: enforceOrderByDate = %b\n", $enforceOrderByDate);
 				if ($enforceOrderByDate && 
 					($this->isGroupDependentOn($groups, $file->group, $group) || $this->isGroupDependentOn($groups, $group, $file->group))) {
 					throw new LogicException(sprintf(

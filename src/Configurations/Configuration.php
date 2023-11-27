@@ -25,15 +25,19 @@ class Configuration implements IConfiguration
 	/** @var IExtensionHandler[] (extension => IExtensionHandler) */
 	private $extensionHandlers;
 
+	/** @var bool */
+	private $enforceOrderByDate;
+
 
 	/**
 	 * @param Group[]             $groups
 	 * @param IExtensionHandler[] $extensionHandlers (extension => IExtensionHandler)
 	 */
-	public function __construct(array $groups, array $extensionHandlers)
+	public function __construct(array $groups, array $extensionHandlers, bool $enforceOrderByDate)
 	{
 		$this->groups = $groups;
 		$this->extensionHandlers = $extensionHandlers;
+		$this->enforceOrderByDate = $enforceOrderByDate;
 	}
 
 
@@ -59,6 +63,6 @@ class Configuration implements IConfiguration
 	 */
 	public function getEnforceOrderByDate()
 	{
-		return true;
+		return $this->enforceOrderByDate;
 	}
 }

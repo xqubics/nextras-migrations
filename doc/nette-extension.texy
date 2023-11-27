@@ -17,6 +17,7 @@ migrations:
 	driver: pgsql               # pgsql or mysql
 	dbal: nextras               # nextras, nette, doctrine or dibi
 	withDummyData: %debugMode%
+	enforceOrderByDate: true    # or false if you want to disable the strict order of migrations (useful when merginng multiple features and then running migrations)
 \--
 
 

@@ -38,8 +38,10 @@ abstract class BaseCommand extends Command
 	{
 		$this->driver = $driver;
 		$this->config = $config;
+		printf("BaseCommand: %s\n", (string)$this->config->getEnforceOrderByDate());
 		$this->printer = $printer ?: new Console();
 		parent::__construct();
+
 	}
 
 

@@ -88,6 +88,9 @@ class NextrasMigrationsExtension extends Extension
 		$configurationDefinition->setArguments([$config['dir'], $driverDefinition, $config['with_dummy_data'], $config['enforce_order_by_date'], $config['php_params']]);
 		$configurationDefinition->addMethodCall('setStructureDiffGenerator', [$structureDiffGeneratorDefinition]);
 
+		printf("NextrasMigrationsExtension.php: $config['enforce_order_by_date'] = %b\n", $config['enforce_order_by_date']);
+		printf("NextrasMigrationsExtension.php: $config['enforceOrderByDate'] = %b\n", $config['enforceOrderByDate']);
+
 		$continueCommandDefinition = new Definition('Nextras\Migrations\Bridges\SymfonyConsole\ContinueCommand');
 		$continueCommandDefinition->setArguments([$driverDefinition, $configurationDefinition, $printerDefinition]);
 		$continueCommandDefinition->addTag('console.command');

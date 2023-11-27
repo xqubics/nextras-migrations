@@ -100,6 +100,7 @@ class Runner
 			}
 
 			$enforceOrderByDate = $config->getEnforceOrderByDate();
+			printf("Runner.php: enforceOrderByDate = %b\n", $enforceOrderByDate);
 		}
 
 		if ($mode === self::MODE_INIT) {
